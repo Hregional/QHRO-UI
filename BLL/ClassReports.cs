@@ -72,7 +72,7 @@ namespace BLL
                     
                     foreach (DataRow itemAnesthetist in infoAnestesistas.Rows)
                     {
-                        DataTable nombreAnestesista = surgeries.getAnesthetistNameBySurgerie(Convert.ToInt32(itemAnesthetist.Field<int>(0))); ;
+                        DataTable nombreAnestesista = surgeries.getAnesthetistNameBySurgerie(Convert.ToInt32(itemAnesthetist.Field<int>(1))); ;
                         foreach (DataRow itemAnestesia in nombreAnestesista.Rows)
                         {
                             surgerie.Anestesiólogo = itemAnestesia.Field<string>(0).ToString();
@@ -84,7 +84,7 @@ namespace BLL
                 {
                     foreach (DataRow itemAnesthetist in infoAnestesistas.Rows)
                     {
-                        DataTable nombreAnestesista = surgeries.getAnesthetistNameBySurgerie(Convert.ToInt32(itemAnesthetist.Field<int>(0))); ;
+                        DataTable nombreAnestesista = surgeries.getAnesthetistNameBySurgerie(Convert.ToInt32(itemAnesthetist.Field<int>(1))); ;
                         foreach (DataRow itemAnestesia in nombreAnestesista.Rows)
                         {
                             anesName = anesName + itemAnestesia.Field<string>(0).ToString() + '/';
