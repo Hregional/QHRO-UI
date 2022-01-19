@@ -80,7 +80,11 @@ namespace UI
             try
             {
                 labelID.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+<<<<<<< HEAD
                 programationId= Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
+=======
+                programationId= Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+>>>>>>> 96dbf3fdc1a5c8f2a6be304a28a72339fe78a661
                 textBoxHistory.Text= dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
                 textBoxName.Text= dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
                 textBoxLastName.Text= dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
