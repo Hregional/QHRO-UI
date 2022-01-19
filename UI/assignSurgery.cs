@@ -80,10 +80,10 @@ namespace UI
             try
             {
                 labelID.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-                programationId= Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
-                textBoxHistory.Text= dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-                textBoxName.Text= dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
-                textBoxLastName.Text= dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+                programationId= Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+                textBoxHistory.Text= dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                textBoxName.Text= dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+                textBoxLastName.Text= dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
                 groupBoxpatientData.Enabled = true;
                 groupBoxDocsData.Enabled = true;
                 groupBoxAssistantsData.Enabled = true;
