@@ -121,7 +121,7 @@ namespace UI
                                 {
                                     labelId.Text = item.Field<int>(0).ToString();
                                     textBoxUser.Text = item.Field<string>(1).ToString();
-                                    textBoxMail.Text = item.Field<string>(12).ToString();
+                                    textBoxMail.Text = item.Field<string>(2).ToString();
                                     textBoxMail.Enabled = false;
                                     textBoxUser.Enabled = false;
                                 }
