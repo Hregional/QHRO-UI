@@ -86,7 +86,11 @@ namespace UI
             try
             {
                 listViewDoctors.Items.Clear();
-                iconButtonConfirm.Enabled = true;             
+                iconButtonConfirm.Enabled = true;
+                groupBoxAssistantsData.Enabled = false;
+                textBoxHistory.Text = "";
+                textBoxName.Text = "";
+                textBoxLastName.Text = "";
                 labelID.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
                 DataTable infoAnesthetist = surgeries.getInfoAnesthetist(Convert.ToInt32(labelID.Text));
                 foreach (DataRow item in infoAnesthetist.Rows)
@@ -124,7 +128,6 @@ namespace UI
 
                     groupBoxpatientData.Enabled = false;
                     groupBoxDocsData.Enabled = false;
-                    groupBoxAssistantsData.Enabled = false;
                     DataTable docs = surgeriesLogic.ObtenerDoctoresAsignados(Convert.ToInt32(labelID.Text));
                     foreach (DataRow item2 in docs.Rows)
                     {
@@ -257,13 +260,20 @@ namespace UI
 
         private void iconButtonAddAssistant_Click_1(object sender, EventArgs e)
         {
-            selectPerson selectP = new selectPerson(3);
-            selectP.ShowDialog();
+            try{
+                selectPerson selectP = new selectPerson(3);
+                selectP.ShowDialog();
 
-            listBoxIds.Items.Add(selectP.id);
-            ListViewItem item = new ListViewItem(selectP.assistantType.ToString());
-            item.SubItems.Add(selectP.name.ToString());
-            listViewAssistants.Items.Add(item);
+                listBoxIds.Items.Add(selectP.id);
+                ListViewItem item = new ListViewItem(selectP.assistantType.ToString());
+                item.SubItems.Add(selectP.name.ToString());
+                listViewAssistants.Items.Add(item);
+            }
+            catch (Exception F)
+            {
+                MessageBox.Show(F.Message+"Ha ocurrido un error");
+            }
+            
         }
     }
 }
