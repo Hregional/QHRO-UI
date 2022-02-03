@@ -86,8 +86,8 @@ namespace UI
         {
             InitializeComponent();
             typePerson = type;
-            comboBoxFilter.Items.Add("DPI");
             comboBoxFilter.Items.Add("Nombre");
+            comboBoxFilter.Items.Add("DPI");
             if (typePerson==1)
             {
                 label1.Text = "Anestesista";
