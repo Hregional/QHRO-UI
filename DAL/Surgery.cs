@@ -839,6 +839,7 @@ namespace DAL
         public string requestSurgeryAndPatientWithDoctors(
            int userId,
            string interventionDetail,
+           string procedure,
            int serviceId,
            string historyNumber,
            string firstName,
@@ -856,6 +857,7 @@ namespace DAL
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@idusuario", userId);
             command.Parameters.AddWithValue("@diagnostico", interventionDetail);
+            command.Parameters.AddWithValue("@procedimiento", procedure);
             command.Parameters.AddWithValue("@idservicio", serviceId);
             command.Parameters.AddWithValue("@no_historia", historyNumber);
             command.Parameters.AddWithValue("@primerNombre", firstName);

@@ -84,6 +84,7 @@ namespace UI
                 textBoxHistory.Text= dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
                 textBoxName.Text= dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
                 textBoxLastName.Text= dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
+                textBoxDiagnosis.Text= dataGridView1.Rows[e.RowIndex ].Cells[10].Value.ToString();
                 groupBoxpatientData.Enabled = true;
                 groupBoxDocsData.Enabled = true;
                 groupBoxAssistantsData.Enabled = true;

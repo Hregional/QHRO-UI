@@ -89,6 +89,7 @@ namespace UI
                     }
                     iconButtonRequest.Visible = true;
                     textBoxDiagnosis.Enabled = true;
+                    textBoxProcedure.Enabled = true;
                 }
             }
         }
@@ -103,6 +104,7 @@ namespace UI
             textBoxsecondSurname.Text = "";
             textBoxAge.Text = "";
             textBoxDiagnosis.Text = "";
+            textBoxProcedure.Text = "";
             comboBoxGender.Text = "";
             textBoxDiagnosis.Text = "";
         }
@@ -144,7 +146,7 @@ namespace UI
        
         private void iconButtonRequest_Click(object sender, EventArgs e)
         {
-            if (textBoxDiagnosis.Text!="")
+            if (textBoxDiagnosis.Text!="" && textBoxProcedure.Text !="")
             {
                 if (listBox1.Items.Count>0)
                 {
@@ -160,7 +162,7 @@ namespace UI
                             doctors.DoctorId = Convert.ToInt32(listBox1.SelectedItem);
                             doctorsList.Add(doctors);
                         }
-                        string response = requestSurgery.makeSurgeryRequestAndPatientWithDoctors(userId, textBoxDiagnosis.Text, serviceId, textBoxhistoryNumber.Text, textBoxfirstName.Text, textBoxsecondName.Text,
+                        string response = requestSurgery.makeSurgeryRequestAndPatientWithDoctors(userId, textBoxDiagnosis.Text,textBoxProcedure.Text, serviceId, textBoxhistoryNumber.Text, textBoxfirstName.Text, textBoxsecondName.Text,
                         textBoxfirstSurname.Text, textBoxsecondSurname.Text, Convert.ToInt16(textBoxAge.Text), comboBoxGender.Text, doctorsList);
                         MessageBox.Show(response);
                     }
@@ -204,7 +206,7 @@ namespace UI
             }
             else
             {
-                MessageBox.Show("Por favor especifique el diagnostico", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Por favor especifique el diagnostico y procedimiento", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 

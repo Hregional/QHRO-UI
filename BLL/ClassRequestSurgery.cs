@@ -140,7 +140,7 @@ namespace BLL
             return response;
         }
 
-        public string makeSurgeryRequestAndPatientWithDoctors(int userId, string interventionDetail, int serviceId, string historyNumber, string firstName, string secondName, string firstSurname
+        public string makeSurgeryRequestAndPatientWithDoctors(int userId, string interventionDetail, string procedure, int serviceId, string historyNumber, string firstName, string secondName, string firstSurname
            , string secondSurname, short age, string gender, List<ClassDtoDoctors> doctorsList)
         {
             string response = "";
@@ -150,7 +150,7 @@ namespace BLL
                 dataDoctors.Rows.Add(item.DoctorId);
             }
             response = surgeries.requestSurgeryAndPatientWithDoctors(userId, 
-                interventionDetail, serviceId, historyNumber, firstName, secondName, firstSurname, secondSurname, age, gender, dataDoctors);
+                interventionDetail, procedure, serviceId, historyNumber, firstName, secondName, firstSurname, secondSurname, age, gender, dataDoctors);
             return response;
         }
     }
