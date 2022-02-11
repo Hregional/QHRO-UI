@@ -118,6 +118,7 @@ namespace QHRO_WEB.Controllers
             string age,
             string gender,
             string diagnosis,
+            string procedure,
             string band,
             string idPatient
             )
@@ -136,6 +137,7 @@ namespace QHRO_WEB.Controllers
                 patientInfo.Age = age;
                 patientInfo.Gender = gender;
                 patientInfo.Diagnosis = diagnosis;
+                patientInfo.Procedure = procedure;
                 patientInfo.Band = band;
                 patientInfo.IdPatient = idPatient;
                 Session["dataPaciente"] = patientInfo;
@@ -235,6 +237,7 @@ namespace QHRO_WEB.Controllers
                     response = requestSurgery.makeSurgeryRequestAndPatientWithDoctors(
                         Convert.ToInt32(Session["idUser"]),
                         infoPaciente.Diagnosis,
+                        infoPaciente.Procedure,
                         Convert.ToInt32(Session["serviceId"]),
                         infoPaciente.HistoryNumber,
                         infoPaciente.FirstName,

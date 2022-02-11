@@ -16,6 +16,7 @@ namespace BLL
         string age;
         string gender;
         string diagnosis;
+        string procedure;
         string band;
         string idPatient;
 
@@ -27,6 +28,7 @@ namespace BLL
         public string Age { get => age; set => age = value; }
         public string Gender { get => gender; set => gender = value; }
         public string Diagnosis { get => diagnosis; set => diagnosis = value; }
+        public string Procedure { get => procedure; set => procedure = value; }
         public string Band { get => band; set => band = value; }
         public string IdPatient { get => idPatient; set => idPatient = value; }
     }
