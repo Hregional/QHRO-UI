@@ -24,8 +24,20 @@ namespace UI
         {
             InitializeComponent();
             userId = idUser;
+            listasOpciones();
         }
 
+        void listasOpciones()
+        {
+            //Tipo de cirugía
+            comboBoxSurgeryType.Items.Insert(0, "Electiva");
+            comboBoxSurgeryType.Items.Insert(1, "Emergencia");
+            comboBoxSurgeryType.SelectedIndex = 0;
+
+            //Relevancia
+            comboBoxRelevance.Items.Insert(0, "No aplica");
+            comboBoxRelevance.SelectedIndex = 0;
+        }
         void ListRequestedSugreries()
         {
             DataTable surgeriesInfo = surgeries.getRequestedSurgeries();
