@@ -103,7 +103,7 @@ namespace UI
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 11.27596F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88.72404F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 11F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 303F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 305F));
             this.tableLayoutPanel1.Controls.Add(this.iconButtonSearchNames, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.iconPictureBox1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.textBoxSearch, 1, 0);
@@ -131,10 +131,10 @@ namespace UI
             this.iconButtonSearchNames.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButtonSearchNames.IconSize = 30;
             this.iconButtonSearchNames.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButtonSearchNames.Location = new System.Drawing.Point(808, 2);
+            this.iconButtonSearchNames.Location = new System.Drawing.Point(806, 2);
             this.iconButtonSearchNames.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButtonSearchNames.Name = "iconButtonSearchNames";
-            this.iconButtonSearchNames.Size = new System.Drawing.Size(298, 39);
+            this.iconButtonSearchNames.Size = new System.Drawing.Size(300, 39);
             this.iconButtonSearchNames.TabIndex = 30;
             this.iconButtonSearchNames.Text = "Buscar";
             this.iconButtonSearchNames.UseVisualStyleBackColor = false;
@@ -163,9 +163,9 @@ namespace UI
             this.textBoxSearch.Location = new System.Drawing.Point(93, 7);
             this.textBoxSearch.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxSearch.Name = "textBoxSearch";
-            this.textBoxSearch.Size = new System.Drawing.Size(697, 30);
+            this.textBoxSearch.Size = new System.Drawing.Size(695, 30);
             this.textBoxSearch.TabIndex = 2;
-            this.textBoxSearch.Text = "Buscar paciente por No. Historia";
+            this.textBoxSearch.Text = "Buscar paciente por No.  Registro";
             this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
             this.textBoxSearch.Enter += new System.EventHandler(this.textBoxSearch_Enter);
             this.textBoxSearch.Leave += new System.EventHandler(this.textBoxSearch_Leave);
@@ -283,9 +283,9 @@ namespace UI
             this.labelhistoryNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelhistoryNumber.Location = new System.Drawing.Point(87, 7);
             this.labelhistoryNumber.Name = "labelhistoryNumber";
-            this.labelhistoryNumber.Size = new System.Drawing.Size(104, 25);
+            this.labelhistoryNumber.Size = new System.Drawing.Size(106, 25);
             this.labelhistoryNumber.TabIndex = 10;
-            this.labelhistoryNumber.Text = "No historia";
+            this.labelhistoryNumber.Text = "No registro";
             // 
             // textBoxhistoryNumber
             // 

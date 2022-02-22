@@ -20,6 +20,8 @@ namespace UI
         public FormViewInterventions()
         {
             InitializeComponent();
+            this.tabControl1.TabPages.Remove(tabPage5);
+            this.tabControl1.TabPages.Remove(tabPage6);
         }
 
         private void FormViewInterventions_Load(object sender, EventArgs e)
