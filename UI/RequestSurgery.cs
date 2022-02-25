@@ -33,9 +33,9 @@ namespace UI
             string historyNumber = "";
             int edad;
 
-            if (textBoxSearch.Text== "Buscar paciente por No. Historia")
+            if (textBoxSearch.Text== "Buscar paciente por No. Registro")
             {
-                MessageBox.Show("Por favcor ingrese un número de historia", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Por favcor ingrese un número de registro", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
@@ -111,14 +111,14 @@ namespace UI
 
         private void textBoxSearch_Enter(object sender, EventArgs e)
         {
-            if (textBoxSearch.Text == "Buscar paciente por No. Historia")
+            if (textBoxSearch.Text == "Buscar paciente por No. Registro")
                 textBoxSearch.Text = "";
         }
 
         private void textBoxSearch_Leave(object sender, EventArgs e)
         {
             if (textBoxSearch.Text == "")
-                textBoxSearch.Text = "Buscar paciente por No. Historia";
+                textBoxSearch.Text = "Buscar paciente por No. Registro";
         }
 
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
