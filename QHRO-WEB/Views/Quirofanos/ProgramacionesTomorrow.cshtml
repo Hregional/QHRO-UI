@@ -2,7 +2,7 @@
     @{
 
         ViewBag.Title = "Programaciones";
-        string[] tableHeader = new string[] { "Hora", "Qx", "No_Historia", "Nombre", "Edad", "Procedimiento", "Servicio", "Cirujano", "Anestesiólogo", "Enfermería" };
+        string[] tableHeader = new string[] { "Hora", "Qx", "No_Historia", "Nombre", "Edad", "Procedimiento", "Servicio", "Cirujano", "Anestesiólogo" };
     }
 
     @*Vista cirugias programadas y emergencia*@
@@ -30,7 +30,8 @@
                             console.log(data);
                             $('tbody').empty();
                             for (var i = 0; i < data.length; i++) {
-                                $('tbody').append('<tr><td>' + data[i].Hora + '</td><td>' + data[i].Qx + '</td><td>' + data[i].No_Historia + '</td><td>' + data[i].Nombre + '</td><td>' + data[i].Edad + '</td><td>' + data[i].Procedimiento + '</td><td>' + data[i].Servicio + '</td><td>' + data[i].Cirujano + '</td><td>' + data[i].Anestesiólogo + '</td><td>' + data[i].Enfermería + '</td></tr>');
+                                $('tbody').append('<tr><td>' + data[i].Hora + '</td><td>' + data[i].Qx + '</td><td>' + data[i].No_Historia + '</td><td>' + data[i].Nombre + '</td><td>' + data[i].Edad + '</td><td>' + data[i].Procedimiento + '</td><td>' + data[i].Servicio + '</td><td>' + data[i].Cirujano + '</td><td>' + data[i].Anestesiólogo + '</td></tr>');
+                                //<td>' + data[i].Enfermería + '</td> add yo show nurses XD
                             }
                         },
                         error: function (er) {
@@ -52,7 +53,7 @@
                 <div class="row mb-3">
                     <div class="row mb-3">
                         <div class="col-sm-3">
-                            <div style="font-size: 30px; color:white;">
+                            <!--div style="font-size: 30px; color:white;">
                                 <script type="text/javascript">
                                     //<![CDATA[
                                     var today = new Date();
@@ -63,11 +64,11 @@
                                     document.write('Fecha: ' + today.getDate(), '/' + mes, '/' + year);
                                     //]]>
                                 </script>
-                            </div>
+                            </!--div-->
                         </div>
                         <div class="col-sm-7">
                             <div class="text-center">
-                                <h1 style="color:white;">Programaciones</h1>
+                                <h1 style="color:white;">Programaciones para mañana</h1>
                             </div>
                         </div>
                         <div class="col-sm-2">
