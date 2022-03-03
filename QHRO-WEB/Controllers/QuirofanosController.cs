@@ -23,10 +23,22 @@ namespace QHRO_WEB.Controllers
             ViewBag.userName = nombreUsuario;
             return View();
         }
-
+        public ActionResult ProgramacionesTomorrow(string userName = "")
+        {
+            nombreUsuario = userName;
+            ViewBag.userName = nombreUsuario;
+            return View();
+        }
         public JsonResult fetchData()
         {
             var json = Newtonsoft.Json.JsonConvert.SerializeObject(reports.dailySchedule(DateTime.Now.ToString("yyyy/MM/dd")));
+            reports.ChangeStatusOperatingRoom();
+            return Json(json, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult fetchDataTomorrow()
+        {
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(reports.dailySchedule(DateTime.Today.AddDays(1).ToString("yyyy/MM/dd")));
             reports.ChangeStatusOperatingRoom();
             return Json(json, JsonRequestBehavior.AllowGet);
         }

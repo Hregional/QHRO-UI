@@ -1,0 +1,113 @@
+﻿
+    @{
+
+        ViewBag.Title = "Programaciones";
+        string[] tableHeader = new string[] { "Hora", "Qx", "No_Historia", "Nombre", "Edad", "Procedimiento", "Servicio", "Cirujano", "Anestesiólogo", "Enfermería" };
+    }
+
+    @*Vista cirugias programadas y emergencia*@
+
+    
+    <div class="container-fluid" id="" style="width:90%" >
+
+       
+
+        <script>
+            //function reloadData() {
+            //    $(document).ready(function () {
+            //        $('#reloadContent').load('/Quirofanos/Programaciones');
+            //    })
+            //}
+            $(document).ready(function () {
+                var refreshId = setInterval(function () {
+
+                    $.ajax({
+                        url: "/Quirofanos/fetchDataTomorrow",
+                        method: "GET",
+                        success: function (data) {
+
+                            data = JSON.parse(data);
+                            console.log(data);
+                            $('tbody').empty();
+                            for (var i = 0; i < data.length; i++) {
+                                $('tbody').append('<tr><td>' + data[i].Hora + '</td><td>' + data[i].Qx + '</td><td>' + data[i].No_Historia + '</td><td>' + data[i].Nombre + '</td><td>' + data[i].Edad + '</td><td>' + data[i].Procedimiento + '</td><td>' + data[i].Servicio + '</td><td>' + data[i].Cirujano + '</td><td>' + data[i].Anestesiólogo + '</td><td>' + data[i].Enfermería + '</td></tr>');
+                            }
+                        },
+                        error: function (er) {
+                            console.log(data);
+                        }
+                    });
+                }, 1000);
+            });
+            //$(document).ready(function () {
+            //    $('#btnfilltable').on('click', function () {
+
+            //    });
+            //});
+        </script>
+
+        <div class="row mb-3" id="">
+           
+            <div class="col-12" style="margin-top:35px">
+                <div class="row mb-3">
+                    <div class="row mb-3">
+                        <div class="col-sm-3">
+                            <div style="font-size: 30px; color:white;">
+                                <script type="text/javascript">
+                                    //<![CDATA[
+                                    var today = new Date();
+                                    var m = today.getMonth() + 1;
+                                    var mes = (m < 10) ? '0' + m : m;
+                                    var yy = today.getYear();
+                                    var year = (yy < 1000) ? yy + 1900 : yy;
+                                    document.write('Fecha: ' + today.getDate(), '/' + mes, '/' + year);
+                                    //]]>
+                                </script>
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="text-center">
+                                <h1 style="color:white;">Programaciones</h1>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <script type="text/javascript">
+                                function startTime() {
+                                    today = new Date();
+                                    h = today.getHours();
+                                    m = today.getMinutes();
+                                    s = today.getSeconds();
+                                    m = checkTime(m);
+                                    s = checkTime(s);
+                                    document.getElementById('reloj').innerHTML = h + ":" + m + ":" + s;
+                                    t = setTimeout('startTime()', 500);
+                                }
+                                function checkTime(i) { if (i < 10) { i = "0" + i; } return i; }
+                                window.onload = function () { startTime(); }
+                            </script>
+                            <button type="button" class="btn btn btn-success" id="btnfilltable"><i class="fas fa-redo-alt"></i></button>
+                            <div id="reloj" style="font-size:30px; float:left; margin-right:15%; color:white;"></div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table table-hover table-dark">
+                    <thead class="thead-dark">
+                        <tr>
+                            @{
+                                foreach (string columnHead in tableHeader)
+                                {
+                                    <th scope="col">@columnHead</th>
+                                }
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+
+    </div>

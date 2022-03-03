@@ -179,6 +179,7 @@
     <Content Include="Views\Quirofanos\buscarDoctor.cshtml" />
     <Content Include="Views\Quirofanos\agregarDoctor.cshtml" />
     <Content Include="Views\Quirofanos\eliminarDoctor.cshtml" />
+    <Content Include="Views\Quirofanos\ProgramacionesTomorrow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
