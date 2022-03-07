@@ -162,8 +162,19 @@ namespace UI
                             doctors.DoctorId = Convert.ToInt32(listBox1.SelectedItem);
                             doctorsList.Add(doctors);
                         }
-                        string response = requestSurgery.makeSurgeryRequestAndPatientWithDoctors(userId, textBoxDiagnosis.Text, textBoxProcedure.Text, serviceId, textBoxhistoryNumber.Text, textBoxfirstName.Text, textBoxsecondName.Text,
-                        textBoxfirstSurname.Text, textBoxsecondSurname.Text, Convert.ToInt16(textBoxAge.Text), comboBoxGender.Text, doctorsList);
+                        string response = requestSurgery.makeSurgeryRequestAndPatientWithDoctors(
+                            userId,
+                            textBoxDiagnosis.Text,
+                            textBoxProcedure.Text,
+                            serviceId, 
+                            textBoxhistoryNumber.Text, 
+                            textBoxfirstName.Text, 
+                            textBoxsecondName.Text,
+                            textBoxfirstSurname.Text, 
+                            textBoxsecondSurname.Text, 
+                            Convert.ToInt16(textBoxAge.Text), 
+                            comboBoxGender.Text, doctorsList);
+
                         MessageBox.Show(response);
                     }
                     else if (band == 2)
@@ -182,13 +193,14 @@ namespace UI
                             textBoxDiagnosis.Text,
                             textBoxfirstName.Text,
                             textBoxsecondName.Text,
-                        textBoxfirstSurname.Text,
-                        textBoxsecondSurname.Text,
-                        Convert.ToInt16(textBoxAge.Text),
-                        comboBoxGender.Text,
+                            textBoxfirstSurname.Text,
+                            textBoxsecondSurname.Text,
+                            Convert.ToInt16(textBoxAge.Text),
+                            comboBoxGender.Text,
                            Convert.ToInt32(labelID.Text),
                            serviceId,
                            doctorsList);
+
                         MessageBox.Show(response);
                     }
 
@@ -197,11 +209,7 @@ namespace UI
                 else
                 {
                     MessageBox.Show("Porfavor asigne al personal médico");
-
-
-
                 }
-
 
             }
             else
