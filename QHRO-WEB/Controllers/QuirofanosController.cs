@@ -273,6 +273,7 @@ namespace QHRO_WEB.Controllers
                     response = requestSurgery.makeSurgeryRequest(
                         Convert.ToInt32(Session["idUser"]),
                         infoPaciente.Diagnosis,
+                        infoPaciente.Procedure,
                         infoPaciente.FirstName,
                         infoPaciente.SecondName,
                     infoPaciente.FirstSurname,
