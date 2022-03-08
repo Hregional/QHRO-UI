@@ -102,6 +102,7 @@ namespace BLL
         public string makeSurgeryRequest(
             int userId,
             string interventionDetail,
+            string procedure,
             string firstName,
             string secondName,
             string firstSurname,
@@ -118,9 +119,10 @@ namespace BLL
             {
                 dataDoctors.Rows.Add(item.DoctorId);
             }
-            response =surgeries.requestSurgery( 
+            response = surgeries.requestSurgery( 
                 userId,
                 interventionDetail,
+                procedure,
                 firstName,
                 secondName,
                 firstSurname,

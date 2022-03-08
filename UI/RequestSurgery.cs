@@ -191,6 +191,7 @@ namespace UI
                         string response = requestSurgery.makeSurgeryRequest(
                             userId,
                             textBoxDiagnosis.Text,
+                            textBoxProcedure.Text,
                             textBoxfirstName.Text,
                             textBoxsecondName.Text,
                             textBoxfirstSurname.Text,
