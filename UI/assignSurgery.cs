@@ -52,8 +52,8 @@ namespace UI
                 dataGridView1.Columns[0].Visible = false;
                 dataGridView1.Columns[1].Visible = false;
                 dataGridView1.Columns[9].Visible = false;
-                dataGridView1.AutoResizeColumns();
-                dataGridView1.AutoResizeRows();
+                dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+                dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
                 dataGridView1.Refresh();
             }
         }
