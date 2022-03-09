@@ -243,7 +243,7 @@ namespace UI
             this.comboBoxTime.Items.AddRange(new object[] {
             "A.M",
             "P.M"});
-            this.comboBoxTime.Location = new System.Drawing.Point(322, 7);
+            this.comboBoxTime.Location = new System.Drawing.Point(322, 11);
             this.comboBoxTime.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxTime.Name = "comboBoxTime";
             this.comboBoxTime.Size = new System.Drawing.Size(152, 32);
@@ -315,7 +315,7 @@ namespace UI
             "57",
             "58",
             "59"});
-            this.comboBoxMin.Location = new System.Drawing.Point(171, 7);
+            this.comboBoxMin.Location = new System.Drawing.Point(171, 11);
             this.comboBoxMin.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxMin.Name = "comboBoxMin";
             this.comboBoxMin.Size = new System.Drawing.Size(143, 32);
@@ -352,7 +352,7 @@ namespace UI
             "10",
             "11",
             "12"});
-            this.comboBoxHour.Location = new System.Drawing.Point(4, 7);
+            this.comboBoxHour.Location = new System.Drawing.Point(4, 11);
             this.comboBoxHour.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxHour.Name = "comboBoxHour";
             this.comboBoxHour.Size = new System.Drawing.Size(114, 32);
@@ -495,7 +495,7 @@ namespace UI
             this.comboBoxSurgeryType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSurgeryType.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboBoxSurgeryType.FormattingEnabled = true;
-            this.comboBoxSurgeryType.Location = new System.Drawing.Point(614, 120);
+            this.comboBoxSurgeryType.Location = new System.Drawing.Point(614, 124);
             this.comboBoxSurgeryType.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxSurgeryType.Name = "comboBoxSurgeryType";
             this.comboBoxSurgeryType.Size = new System.Drawing.Size(478, 32);
@@ -542,7 +542,7 @@ namespace UI
             this.comboBoxRelevance.Items.AddRange(new object[] {
             "Mayor",
             "Menor"});
-            this.comboBoxRelevance.Location = new System.Drawing.Point(134, 115);
+            this.comboBoxRelevance.Location = new System.Drawing.Point(134, 119);
             this.comboBoxRelevance.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxRelevance.Name = "comboBoxRelevance";
             this.comboBoxRelevance.Size = new System.Drawing.Size(420, 32);
@@ -743,7 +743,7 @@ namespace UI
             this.comboBoxOperatingRooms.Items.AddRange(new object[] {
             "General",
             "Epidural"});
-            this.comboBoxOperatingRooms.Location = new System.Drawing.Point(270, 12);
+            this.comboBoxOperatingRooms.Location = new System.Drawing.Point(270, 16);
             this.comboBoxOperatingRooms.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxOperatingRooms.Name = "comboBoxOperatingRooms";
             this.comboBoxOperatingRooms.Size = new System.Drawing.Size(259, 32);
