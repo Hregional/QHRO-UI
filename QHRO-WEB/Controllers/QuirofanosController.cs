@@ -38,7 +38,7 @@ namespace QHRO_WEB.Controllers
 
         public JsonResult fetchDataTomorrow()
         {
-            var json = Newtonsoft.Json.JsonConvert.SerializeObject(reports.dailySchedule(DateTime.Today.AddDays(1).ToString("yyyy/MM/dd")));
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject(reports.dailySchedule(DateTime.Today.AddDays(1).ToString("yyyy/MM/dd"),1));
             reports.ChangeStatusOperatingRoom();
             return Json(json, JsonRequestBehavior.AllowGet);
         }

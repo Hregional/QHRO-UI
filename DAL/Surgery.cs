@@ -28,7 +28,20 @@ namespace DAL
             connection.CloseConnection();
             return tableData;
         }
-        
+
+        public DataTable GetDailySurgeriesScreen()
+        {
+            tableData = new DataTable();
+            command.Connection = connection.OpenConnection();
+            command.CommandText = "verCirugiasEnPantalla";
+            command.CommandType = CommandType.StoredProcedure;
+            read = command.ExecuteReader();
+            tableData.Load(read);
+            command.Parameters.Clear();
+            connection.CloseConnection();
+            return tableData;
+        }
+
         public DataTable GetUnfinishedSurgeries()
         {
             tableData = new DataTable();
