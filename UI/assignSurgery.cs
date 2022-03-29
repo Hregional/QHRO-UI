@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
@@ -253,14 +254,22 @@ namespace UI
                                             Convert.ToInt32(labelID.Text));
                                         if (response == "Se ha asignado la cirugía con éxito!")
                                         {
-                                            for (int i = 0; i < listBoxDocId.Items.Count; i++)
-                                            {
-                                                listBoxDocId.SelectedIndex = i;
-                                                string getMail = doctorss.getDoctorsById(Convert.ToInt32(listBoxDocId.SelectedItem));
-                                                response = mail.MakeMail(getMail,
-                                                    "Se le ha asignado para una intervención el día: " + dateTimeSurgeryDate.Value.Day.ToString() + "/" + dateTimeSurgeryDate.Value.Month.ToString() + "/" + dateTimeSurgeryDate.Value.Year.ToString() + " a las: " + comboBoxHour.Text + ':' + comboBoxMin.Text + ' ' + comboBoxTime.Text
-                                                   + " \n Del paciente: " + textBoxName.Text + " " + textBoxLastName.Text + " con numero de historia: " + textBoxHistory.Text, "Intervención", "Se ha asignado la cirugía con éxito!");
-                                            }
+                                            //listBoxDocId
+                                            // BackgroundEmailMethod(listBoxDocId);
+                                            List<String> datoslist = new List<String>();
+
+                                            datoslist.Add(dateTimeSurgeryDate.Value.Day.ToString()); 
+                                            datoslist.Add(dateTimeSurgeryDate.Value.Month.ToString());  
+                                            datoslist.Add(dateTimeSurgeryDate.Value.Year.ToString() );
+                                            datoslist.Add(comboBoxHour.Text);
+                                            datoslist.Add(comboBoxMin.Text);
+                                            datoslist.Add(comboBoxTime.Text);
+                                            datoslist.Add(textBoxName.Text);
+                                            datoslist.Add(textBoxLastName.Text);
+                                            datoslist.Add(textBoxHistory.Text);
+
+                                            Thread myNewThread = new Thread(() => BackgroundEmailMethod(listBoxDocId,datoslist));
+                                            myNewThread.Start();
                                             MessageBox.Show(response);
                                         }
                                         else
@@ -311,14 +320,19 @@ namespace UI
                                             Convert.ToInt32(labelID.Text));
                                         if (response == "Se ha asignado la cirugía con éxito!")
                                         {
-                                            for (int i = 0; i < listBoxDocId.Items.Count; i++)
-                                            {
-                                                listBoxDocId.SelectedIndex = i;
-                                                string getMail = doctorss.getDoctorsById(Convert.ToInt32(listBoxDocId.SelectedItem));
-                                                response = mail.MakeMail(getMail,
-                                                    "Se le ha asignado para una intervención el día: " + dateTimeSurgeryDate.Value.Day.ToString() + "/" + dateTimeSurgeryDate.Value.Month.ToString() + "/" + dateTimeSurgeryDate.Value.Year.ToString() + " a las: " + comboBoxHour.Text + ':' + comboBoxMin.Text + ' ' + comboBoxTime.Text
-                                                   + " \n Del paciente: " + textBoxName.Text + " " + textBoxLastName.Text + " con numero de historia: " + textBoxHistory.Text, "Intervención", "Se ha asignado la cirugía con éxito!");
-                                            }
+                                            List<String> datoslist = new List<String>();
+                                            datoslist.Add(dateTimeSurgeryDate.Value.Day.ToString());
+                                            datoslist.Add(dateTimeSurgeryDate.Value.Month.ToString());
+                                            datoslist.Add(dateTimeSurgeryDate.Value.Year.ToString());
+                                            datoslist.Add(comboBoxHour.Text);
+                                            datoslist.Add(comboBoxMin.Text);
+                                            datoslist.Add(comboBoxTime.Text);
+                                            datoslist.Add(textBoxName.Text);
+                                            datoslist.Add(textBoxLastName.Text);
+                                            datoslist.Add(textBoxHistory.Text);
+
+                                            Thread myNewThread = new Thread(() => BackgroundEmailMethod(listBoxDocId, datoslist));
+                                            myNewThread.Start();
                                             MessageBox.Show(response);
                                         }
                                         else
@@ -585,6 +599,23 @@ namespace UI
             else
             {
                 MessageBox.Show("Cancelado");
+            }
+
+        }
+        /// <summary>
+        /// Envia correos
+        /// </summary>
+        /// <param name="listBoxDocId"></param>
+        private void BackgroundEmailMethod(ListBox listBoxDocId, List<String> info)
+        {
+
+            for (int i = 0; i < listBoxDocId.Items.Count; i++)
+            {
+                listBoxDocId.SelectedIndex = i;
+                string getMail = doctorss.getDoctorsById(Convert.ToInt32(listBoxDocId.SelectedItem));
+                mail.MakeMail(getMail,
+                    "Se le ha asignado para una intervención el día: " + info[0] + "/" + info[1] + "/" + info[2] + " a las: " + info[3] + ':' + info[4] + ' ' + info[5]
+                   + " \n Del paciente: " + info[6] + " " + info[7] + " con numero de historia: " + info[8], "Intervención", "Se ha asignado la cirugía con éxito!");
             }
 
         }
