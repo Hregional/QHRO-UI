@@ -29,5 +29,7 @@ namespace BLL
         public string Especialidad { get; set; }
 
         public string Tipo_Cirugia { get; set; }
+
+        public string Anestesiólogo { get; set; }
     }
 }

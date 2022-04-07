@@ -61,6 +61,7 @@ namespace UI
                     int idSurgery = 0;
                     string docName = "";
                     string specialties = "";
+                    string anesName = "";
                     surgerie = new ClassDailyReport();
                     idSurgery = Convert.ToInt32(item.Field<int>(0));
                     surgerie.No_Historia = item.Field<string>(1).ToString();
@@ -71,6 +72,7 @@ namespace UI
                     surgerie.Operacion_Realizada = item.Field<string>(6).ToString();
                     surgerie.Tipo_Anestesia = item.Field<string>(7).ToString();
                     DataTable getSurgeries = surgeries.getDoctorsByIdSurgerie(idSurgery);
+                    
                     if (getSurgeries.Rows.Count < 2)
                     {
                         foreach (DataRow itemDoc in getSurgeries.Rows)
@@ -90,6 +92,33 @@ namespace UI
                         surgerie.Cirujano = surgerie.Cirujano.TrimEnd('/');
                         surgerie.Especialidad = specialties.TrimEnd(' ');
                         surgerie.Especialidad = surgerie.Especialidad.TrimEnd('/');
+                    }
+                    DataTable infoAnestesistas = surgeries.getAnesthetistBySurgerie(idSurgery);
+                    if (infoAnestesistas.Rows.Count < 2)
+                    {
+
+                        foreach (DataRow itemAnesthetist in infoAnestesistas.Rows)
+                        {
+                            DataTable nombreAnestesista = surgeries.getAnesthetistNameBySurgerie(Convert.ToInt32(itemAnesthetist.Field<int>(1))); ;
+                            foreach (DataRow itemAnestesia in nombreAnestesista.Rows)
+                            {
+                                surgerie.Anestesiólogo = itemAnestesia.Field<string>(0).ToString();
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        foreach (DataRow itemAnesthetist in infoAnestesistas.Rows)
+                        {
+                            DataTable nombreAnestesista = surgeries.getAnesthetistNameBySurgerie(Convert.ToInt32(itemAnesthetist.Field<int>(1))); ;
+                            foreach (DataRow itemAnestesia in nombreAnestesista.Rows)
+                            {
+                                anesName = anesName + itemAnestesia.Field<string>(0).ToString() + '/';
+
+                            }
+                            surgerie.Anestesiólogo = anesName.TrimEnd('/');
+                        }
                     }
                     surgerie.Tipo_Cirugia = item.Field<string>(8).ToString();
                     surgerie.Tiempo = item.Field<System.DateTime>(9).ToString("dd/MM/yyyy");
