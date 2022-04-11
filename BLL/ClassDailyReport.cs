@@ -31,5 +31,8 @@ namespace BLL
         public string Tipo_Cirugia { get; set; }
 
         public string Anestesiólogo { get; set; }
+
+        public string Quirofano { get; set; }
+            
     }
 }

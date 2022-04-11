@@ -70,7 +70,8 @@ namespace UI
                     surgerie.Edad = Convert.ToInt16(item.Field<short>(4));
                     surgerie.Servicio = item.Field<string>(5).ToString();
                     surgerie.Operacion_Realizada = item.Field<string>(6).ToString();
-                    surgerie.Tipo_Anestesia = item.Field<string>(7).ToString();
+                    surgerie.Quirofano = item.Field<string>(7).ToString();
+                    surgerie.Tipo_Anestesia = item.Field<string>(8).ToString();
                     DataTable getSurgeries = surgeries.getDoctorsByIdSurgerie(idSurgery);
                     
                     if (getSurgeries.Rows.Count < 2)
@@ -120,8 +121,8 @@ namespace UI
                             surgerie.Anestesiólogo = anesName.TrimEnd('/');
                         }
                     }
-                    surgerie.Tipo_Cirugia = item.Field<string>(8).ToString();
-                    surgerie.Tiempo = item.Field<System.DateTime>(9).ToString("dd/MM/yyyy");
+                    surgerie.Tipo_Cirugia = item.Field<string>(9).ToString();
+                    surgerie.Tiempo = item.Field<System.DateTime>(10).ToString("dd/MM/yyyy");
                     listSurgerie.Add(surgerie);
                 }
                 ReportDataSource Report;
