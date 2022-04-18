@@ -12,7 +12,7 @@ namespace UI
 {
     public partial class RequestSurgery : Form
     {
-        private ClassPatient patients=new ClassPatient();
+        private ClassPatient patients = new ClassPatient();
         private ClassPHro patientsHro = new ClassPHro();
         private ClassRequestSurgery requestSurgery = new ClassRequestSurgery();
         int serviceId;
@@ -24,18 +24,18 @@ namespace UI
             if (idService > 0)
                 serviceId = idService;
             else
-                serviceId = 22;    
+                serviceId = 22;
         }
-        int band =0;
+        int band = 0;
         void listPatients(string param)
         {
             DataTable infoPatientsHro = patientsHro.getPatientsByHistoryNumber(param);
             string historyNumber = "";
             int edad;
 
-            if (textBoxSearch.Text== "Buscar paciente por No. Historia")
+            if (textBoxSearch.Text == "Buscar paciente por No. Registro")
             {
-                MessageBox.Show("Por favcor ingrese un número de historia", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Por favcor ingrese un número de registro", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
@@ -89,6 +89,7 @@ namespace UI
                     }
                     iconButtonRequest.Visible = true;
                     textBoxDiagnosis.Enabled = true;
+                    textBoxProcedure.Enabled = true;
                 }
             }
         }
@@ -103,25 +104,26 @@ namespace UI
             textBoxsecondSurname.Text = "";
             textBoxAge.Text = "";
             textBoxDiagnosis.Text = "";
+            textBoxProcedure.Text = "";
             comboBoxGender.Text = "";
             textBoxDiagnosis.Text = "";
         }
 
         private void textBoxSearch_Enter(object sender, EventArgs e)
         {
-            if (textBoxSearch.Text == "Buscar paciente por No. Historia")
+            if (textBoxSearch.Text == "Buscar paciente por No. Registro")
                 textBoxSearch.Text = "";
         }
 
         private void textBoxSearch_Leave(object sender, EventArgs e)
         {
             if (textBoxSearch.Text == "")
-                textBoxSearch.Text = "Buscar paciente por No. Historia";
+                textBoxSearch.Text = "Buscar paciente por No. Registro";
         }
 
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void comboBoxFilters_SelectedIndexChanged(object sender, EventArgs e)
@@ -141,12 +143,12 @@ namespace UI
         {
 
         }
-       
+
         private void iconButtonRequest_Click(object sender, EventArgs e)
         {
-            if (textBoxDiagnosis.Text!="")
+            if (textBoxDiagnosis.Text != "" && textBoxProcedure.Text != "")
             {
-                if (listBox1.Items.Count>0)
+                if (listBox1.Items.Count > 0)
                 {
                     if (band == 1)
                     {
@@ -160,8 +162,19 @@ namespace UI
                             doctors.DoctorId = Convert.ToInt32(listBox1.SelectedItem);
                             doctorsList.Add(doctors);
                         }
-                        string response = requestSurgery.makeSurgeryRequestAndPatientWithDoctors(userId, textBoxDiagnosis.Text, serviceId, textBoxhistoryNumber.Text, textBoxfirstName.Text, textBoxsecondName.Text,
-                        textBoxfirstSurname.Text, textBoxsecondSurname.Text, Convert.ToInt16(textBoxAge.Text), comboBoxGender.Text, doctorsList);
+                        string response = requestSurgery.makeSurgeryRequestAndPatientWithDoctors(
+                            userId,
+                            textBoxDiagnosis.Text,
+                            textBoxProcedure.Text,
+                            serviceId, 
+                            textBoxhistoryNumber.Text, 
+                            textBoxfirstName.Text, 
+                            textBoxsecondName.Text,
+                            textBoxfirstSurname.Text, 
+                            textBoxsecondSurname.Text, 
+                            Convert.ToInt16(textBoxAge.Text), 
+                            comboBoxGender.Text, doctorsList);
+
                         MessageBox.Show(response);
                     }
                     else if (band == 2)
@@ -178,15 +191,17 @@ namespace UI
                         string response = requestSurgery.makeSurgeryRequest(
                             userId,
                             textBoxDiagnosis.Text,
+                            textBoxProcedure.Text,
                             textBoxfirstName.Text,
                             textBoxsecondName.Text,
-                        textBoxfirstSurname.Text,
-                        textBoxsecondSurname.Text,
-                        Convert.ToInt16(textBoxAge.Text),
-                        comboBoxGender.Text,
+                            textBoxfirstSurname.Text,
+                            textBoxsecondSurname.Text,
+                            Convert.ToInt16(textBoxAge.Text),
+                            comboBoxGender.Text,
                            Convert.ToInt32(labelID.Text),
-                           serviceId, 
+                           serviceId,
                            doctorsList);
+
                         MessageBox.Show(response);
                     }
 
@@ -195,16 +210,12 @@ namespace UI
                 else
                 {
                     MessageBox.Show("Porfavor asigne al personal médico");
-                  
-                        
-                    
                 }
-               
-             
+
             }
             else
             {
-                MessageBox.Show("Por favor especifique el diagnostico", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Por favor especifique el diagnostico y procedimiento", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -215,14 +226,14 @@ namespace UI
                 iconButtonRequest.Enabled = true;
                 groupBoxDocsData.Enabled = true;
             }
-                
+
         }
 
         private void iconButtonCreateAndRequest_Click(object sender, EventArgs e)
         {
             if (textBoxDiagnosis.Text != "")
             {
-                string response = requestSurgery.makeSurgeryRequestAndPatient(userId, textBoxDiagnosis.Text, serviceId,"NULL", textBoxfirstName.Text, textBoxsecondName.Text,
+                string response = requestSurgery.makeSurgeryRequestAndPatient(userId, textBoxDiagnosis.Text, serviceId, "NULL", textBoxfirstName.Text, textBoxsecondName.Text,
                 textBoxfirstSurname.Text, textBoxsecondSurname.Text, Convert.ToInt16(textBoxAge.Text), comboBoxGender.Text);
                 MessageBox.Show(response);
                 this.Close();

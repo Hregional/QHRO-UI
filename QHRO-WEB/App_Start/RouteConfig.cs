@@ -36,6 +36,11 @@ namespace QHRO_WEB
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Quirofanos", action = "Programaciones", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+               name: "ProgramacionesT",
+               url: "{controller}/{action}/{id}",
+               defaults: new { controller = "Quirofanos", action = "ProgramacionesTomorrow", id = UrlParameter.Optional }
+           );
         }
     }
 }

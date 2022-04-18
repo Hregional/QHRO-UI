@@ -32,8 +32,7 @@ namespace UI
         {
             dataGridViewSchedule.DataSource = reports.dailySchedule(date);
             dataGridViewSchedule.Columns[0].Visible = false;
-            dataGridViewSchedule.AutoResizeColumns();
-            dataGridViewSchedule.AutoResizeRows();
+            dataGridViewSchedule.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewSchedule.Refresh();
         }
 

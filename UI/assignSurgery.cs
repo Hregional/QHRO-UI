@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
@@ -24,8 +25,20 @@ namespace UI
         {
             InitializeComponent();
             userId = idUser;
+            listasOpciones();
         }
 
+        void listasOpciones()
+        {
+            //Tipo de cirugía
+            comboBoxSurgeryType.Items.Insert(0, "Electiva");
+            comboBoxSurgeryType.Items.Insert(1, "Emergencia");
+            comboBoxSurgeryType.SelectedIndex = 0;
+
+            //Relevancia
+            comboBoxRelevance.Items.Insert(0, "No aplica");
+            comboBoxRelevance.SelectedIndex = 0;
+        }
         void ListRequestedSugreries()
         {
             DataTable surgeriesInfo = surgeries.getRequestedSurgeries();
@@ -40,9 +53,18 @@ namespace UI
                 dataGridView1.Columns[0].Visible = false;
                 dataGridView1.Columns[1].Visible = false;
                 dataGridView1.Columns[9].Visible = false;
-                dataGridView1.AutoResizeColumns();
-                dataGridView1.AutoResizeRows();
+                dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+                dataGridView1.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dataGridView1.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvUserDetails_RowPostPaint);
                 dataGridView1.Refresh();
+            }
+        }
+
+        private void dgvUserDetails_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            using (SolidBrush b = new SolidBrush(dataGridView1.RowHeadersDefaultCellStyle.ForeColor))
+            {
+                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X, e.RowBounds.Location.Y + 4);
             }
         }
 
@@ -81,9 +103,10 @@ namespace UI
             {
                 labelID.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
                 programationId= Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
-                textBoxHistory.Text= dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-                textBoxName.Text= dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
-                textBoxLastName.Text= dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+                textBoxHistory.Text= dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                textBoxName.Text= dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+                textBoxLastName.Text= dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
+                textBoxDiagnosis.Text= dataGridView1.Rows[e.RowIndex ].Cells[10].Value.ToString();
                 groupBoxpatientData.Enabled = true;
                 groupBoxDocsData.Enabled = true;
                 groupBoxAssistantsData.Enabled = true;
@@ -231,14 +254,22 @@ namespace UI
                                             Convert.ToInt32(labelID.Text));
                                         if (response == "Se ha asignado la cirugía con éxito!")
                                         {
-                                            for (int i = 0; i < listBoxDocId.Items.Count; i++)
-                                            {
-                                                listBoxDocId.SelectedIndex = i;
-                                                string getMail = doctorss.getDoctorsById(Convert.ToInt32(listBoxDocId.SelectedItem));
-                                                response = mail.MakeMail(getMail,
-                                                    "Se le ha asignado para una intervención el día: " + dateTimeSurgeryDate.Value.Day.ToString() + "/" + dateTimeSurgeryDate.Value.Month.ToString() + "/" + dateTimeSurgeryDate.Value.Year.ToString() + " a las: " + comboBoxHour.Text + ':' + comboBoxMin.Text + ' ' + comboBoxTime.Text
-                                                   + " \n Del paciente: " + textBoxName.Text + " " + textBoxLastName.Text + " con numero de historia: " + textBoxHistory.Text, "Intervención", "Se ha asignado la cirugía con éxito!");
-                                            }
+                                            //listBoxDocId
+                                            // BackgroundEmailMethod(listBoxDocId);
+                                            List<String> datoslist = new List<String>();
+
+                                            datoslist.Add(dateTimeSurgeryDate.Value.Day.ToString()); 
+                                            datoslist.Add(dateTimeSurgeryDate.Value.Month.ToString());  
+                                            datoslist.Add(dateTimeSurgeryDate.Value.Year.ToString() );
+                                            datoslist.Add(comboBoxHour.Text);
+                                            datoslist.Add(comboBoxMin.Text);
+                                            datoslist.Add(comboBoxTime.Text);
+                                            datoslist.Add(textBoxName.Text);
+                                            datoslist.Add(textBoxLastName.Text);
+                                            datoslist.Add(textBoxHistory.Text);
+
+                                            Thread myNewThread = new Thread(() => BackgroundEmailMethod(listBoxDocId,datoslist));
+                                            myNewThread.Start();
                                             MessageBox.Show(response);
                                         }
                                         else
@@ -289,14 +320,19 @@ namespace UI
                                             Convert.ToInt32(labelID.Text));
                                         if (response == "Se ha asignado la cirugía con éxito!")
                                         {
-                                            for (int i = 0; i < listBoxDocId.Items.Count; i++)
-                                            {
-                                                listBoxDocId.SelectedIndex = i;
-                                                string getMail = doctorss.getDoctorsById(Convert.ToInt32(listBoxDocId.SelectedItem));
-                                                response = mail.MakeMail(getMail,
-                                                    "Se le ha asignado para una intervención el día: " + dateTimeSurgeryDate.Value.Day.ToString() + "/" + dateTimeSurgeryDate.Value.Month.ToString() + "/" + dateTimeSurgeryDate.Value.Year.ToString() + " a las: " + comboBoxHour.Text + ':' + comboBoxMin.Text + ' ' + comboBoxTime.Text
-                                                   + " \n Del paciente: " + textBoxName.Text + " " + textBoxLastName.Text + " con numero de historia: " + textBoxHistory.Text, "Intervención", "Se ha asignado la cirugía con éxito!");
-                                            }
+                                            List<String> datoslist = new List<String>();
+                                            datoslist.Add(dateTimeSurgeryDate.Value.Day.ToString());
+                                            datoslist.Add(dateTimeSurgeryDate.Value.Month.ToString());
+                                            datoslist.Add(dateTimeSurgeryDate.Value.Year.ToString());
+                                            datoslist.Add(comboBoxHour.Text);
+                                            datoslist.Add(comboBoxMin.Text);
+                                            datoslist.Add(comboBoxTime.Text);
+                                            datoslist.Add(textBoxName.Text);
+                                            datoslist.Add(textBoxLastName.Text);
+                                            datoslist.Add(textBoxHistory.Text);
+
+                                            Thread myNewThread = new Thread(() => BackgroundEmailMethod(listBoxDocId, datoslist));
+                                            myNewThread.Start();
                                             MessageBox.Show(response);
                                         }
                                         else
@@ -563,6 +599,23 @@ namespace UI
             else
             {
                 MessageBox.Show("Cancelado");
+            }
+
+        }
+        /// <summary>
+        /// Envia correos
+        /// </summary>
+        /// <param name="listBoxDocId"></param>
+        private void BackgroundEmailMethod(ListBox listBoxDocId, List<String> info)
+        {
+
+            for (int i = 0; i < listBoxDocId.Items.Count; i++)
+            {
+                listBoxDocId.SelectedIndex = i;
+                string getMail = doctorss.getDoctorsById(Convert.ToInt32(listBoxDocId.SelectedItem));
+                mail.MakeMail(getMail,
+                    "Se le ha asignado para una intervención el día: " + info[0] + "/" + info[1] + "/" + info[2] + " a las: " + info[3] + ':' + info[4] + ' ' + info[5]
+                   + " \n Del paciente: " + info[6] + " " + info[7] + " con numero de historia: " + info[8], "Intervención", "Se ha asignado la cirugía con éxito!");
             }
 
         }

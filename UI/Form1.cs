@@ -85,7 +85,7 @@ namespace UI
             {
                 btn.IconChar = FontAwesome.Sharp.IconChar.Syringe;
             }
-            else if (text == "Editar programaciones")
+            else if (text == "Complementar programaciones")
             {
                 btn.IconChar = FontAwesome.Sharp.IconChar.BriefcaseMedical;
             }
@@ -194,7 +194,7 @@ namespace UI
             {
                 openChildForm(new FormTypesOfAnesthesia());
             }
-            if (btn.Name == "iconButtonEditar programaciones")
+            if (btn.Name == "iconButtonComplementar programaciones")
             {
                 openChildForm(new FormEditInterventios(userId));
             }

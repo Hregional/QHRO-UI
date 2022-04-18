@@ -71,6 +71,11 @@ namespace BLL
             return surgeries.GetDailySurgeries(date);
         }
 
+        public DataTable getDalilySurgeriesScreen()
+        {
+            return surgeries.GetDailySurgeriesScreen();
+        }
+
         public DataTable getDialySurgeriesByOperatingRoom(int id)
         {
             return surgeries.GetDailySurgeriesByRoom(id);

@@ -28,7 +28,20 @@ namespace DAL
             connection.CloseConnection();
             return tableData;
         }
-        
+
+        public DataTable GetDailySurgeriesScreen()
+        {
+            tableData = new DataTable();
+            command.Connection = connection.OpenConnection();
+            command.CommandText = "verCirugiasEnPantalla";
+            command.CommandType = CommandType.StoredProcedure;
+            read = command.ExecuteReader();
+            tableData.Load(read);
+            command.Parameters.Clear();
+            connection.CloseConnection();
+            return tableData;
+        }
+
         public DataTable GetUnfinishedSurgeries()
         {
             tableData = new DataTable();
@@ -766,6 +779,7 @@ namespace DAL
         public string requestSurgery(
             int userId,
             string interventionDetail,
+            string procedure,
             string firstName,
             string secondName,
             string firstSurname,
@@ -782,6 +796,7 @@ namespace DAL
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@idusuario", userId);
             command.Parameters.AddWithValue("@diagnostico", interventionDetail);
+            command.Parameters.AddWithValue("@procedimiento", procedure);
             command.Parameters.AddWithValue("@primer_nombre", firstName);
             command.Parameters.AddWithValue("@segundo_nombre", secondName);
             command.Parameters.AddWithValue("@primer_apellido", firstSurname);
@@ -803,6 +818,7 @@ namespace DAL
         public string requestSurgeryAndPatient(
             int userId,
             string interventionDetail,
+            //string procedure,
             int serviceId,
             string historyNumber,
             string firstName,
@@ -819,6 +835,7 @@ namespace DAL
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@idusuario", userId);
             command.Parameters.AddWithValue("@diagnostico", interventionDetail);
+          //  command.Parameters.AddWithValue("@procedimeinto",procedure);
             command.Parameters.AddWithValue("@idservicio", serviceId);
             command.Parameters.AddWithValue("@no_historia", historyNumber);
             command.Parameters.AddWithValue("@primerNombre", firstName);
@@ -839,6 +856,7 @@ namespace DAL
         public string requestSurgeryAndPatientWithDoctors(
            int userId,
            string interventionDetail,
+           string procedure,
            int serviceId,
            string historyNumber,
            string firstName,
@@ -856,6 +874,7 @@ namespace DAL
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@idusuario", userId);
             command.Parameters.AddWithValue("@diagnostico", interventionDetail);
+            command.Parameters.AddWithValue("@procedimiento", procedure);
             command.Parameters.AddWithValue("@idservicio", serviceId);
             command.Parameters.AddWithValue("@no_historia", historyNumber);
             command.Parameters.AddWithValue("@primerNombre", firstName);

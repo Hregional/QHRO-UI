@@ -12,12 +12,28 @@ namespace BLL
         private Surgeries surgeries = new Surgeries();
         private ClassOperatingRoom Operatigrooms = new ClassOperatingRoom();
         private ClassGetStrings GetStrings = new ClassGetStrings();
-
-        public List<ClassDailySurgeries> dailySchedule(string date) {
+        /// <summary>
+        /// Devuelve lista se cirugìas darias dependiendo de la fecha
+        /// </summary>
+        /// <param name="date"></param>
+        /// <param name="tipodereporte"></param>
+        /// <returns></returns>
+        public List<ClassDailySurgeries> dailySchedule(string date,int tipodereporte = 0) { 
 
             List<ClassDailySurgeries> surgeriesList = new List<ClassDailySurgeries>();
             ClassDailySurgeries surgerie = new ClassDailySurgeries();
-            DataTable surgeriesData = surgeries.getDailySurgeries(date);
+
+            DataTable surgeriesData;
+
+            if (tipodereporte == 1)
+            {
+                surgeriesData = surgeries.getDalilySurgeriesScreen();
+            }
+            else
+            {
+                surgeriesData = surgeries.getDailySurgeries(date);
+            }
+
             foreach (DataRow item in surgeriesData.Rows)
             {
                 string docName = "";
@@ -72,7 +88,7 @@ namespace BLL
                     
                     foreach (DataRow itemAnesthetist in infoAnestesistas.Rows)
                     {
-                        DataTable nombreAnestesista = surgeries.getAnesthetistNameBySurgerie(Convert.ToInt32(itemAnesthetist.Field<int>(0))); ;
+                        DataTable nombreAnestesista = surgeries.getAnesthetistNameBySurgerie(Convert.ToInt32(itemAnesthetist.Field<int>(1))); ;
                         foreach (DataRow itemAnestesia in nombreAnestesista.Rows)
                         {
                             surgerie.Anestesiólogo = itemAnestesia.Field<string>(0).ToString();
@@ -84,7 +100,7 @@ namespace BLL
                 {
                     foreach (DataRow itemAnesthetist in infoAnestesistas.Rows)
                     {
-                        DataTable nombreAnestesista = surgeries.getAnesthetistNameBySurgerie(Convert.ToInt32(itemAnesthetist.Field<int>(0))); ;
+                        DataTable nombreAnestesista = surgeries.getAnesthetistNameBySurgerie(Convert.ToInt32(itemAnesthetist.Field<int>(1))); ;
                         foreach (DataRow itemAnestesia in nombreAnestesista.Rows)
                         {
                             anesName = anesName + itemAnestesia.Field<string>(0).ToString() + '/';
