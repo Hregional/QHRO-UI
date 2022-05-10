@@ -32,14 +32,14 @@ namespace QHRO_WEB.Controllers
         public JsonResult fetchData()
         {
             var json = Newtonsoft.Json.JsonConvert.SerializeObject(reports.dailySchedule(DateTime.Now.ToString("yyyy/MM/dd")));
-           // reports.ChangeStatusOperatingRoom();
+            reports.ChangeStatusOperatingRoom();
             return Json(json, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult fetchDataTomorrow()
         {
             var json = Newtonsoft.Json.JsonConvert.SerializeObject(reports.dailySchedule(DateTime.Today.AddDays(1).ToString("yyyy/MM/dd"),1));
-           // reports.ChangeStatusOperatingRoom();
+            reports.ChangeStatusOperatingRoom();
             return Json(json, JsonRequestBehavior.AllowGet);
         }
 
