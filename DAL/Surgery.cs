@@ -65,6 +65,21 @@ namespace DAL
             connection.CloseConnection();
             return tableData;
         }
+        
+        public DataTable ObtenerCirugiasDiferidas(String Date)
+            {
+            tableData = new DataTable();
+            command.Connection = connection.OpenConnection();
+            command.CommandText = "VerCirugiasDiariasDiferidas";
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@fecha", DateTime.Parse(Date) );
+            read = command.ExecuteReader();
+            tableData.Load(read);
+            command.Parameters.Clear();
+            connection.CloseConnection();
+            return tableData;
+            }
+        
 
         public void updateSurgerieAnesthetist(
             int surgerieId,
@@ -551,6 +566,21 @@ namespace DAL
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@motivo", reason);
             command.Parameters.AddWithValue("@idcirugia", surgerieId);
+            read = command.ExecuteReader();
+            tableData.Load(read);
+            command.Parameters.Clear();
+            connection.CloseConnection();
+            return tableData;
+        }
+
+        public DataTable diferirProgramacion(int surgerieId, string reason)
+        {
+            tableData = new DataTable();
+            command.Connection = connection.OpenConnection();
+            command.CommandText = "DiferirProgramacion";
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@motivo", reason);
+            command.Parameters.AddWithValue("@idprogramacion", surgerieId);
             read = command.ExecuteReader();
             tableData.Load(read);
             command.Parameters.Clear();

@@ -10,16 +10,16 @@ using System.Windows.Forms;
 using BLL;
 namespace UI
 {
-    public partial class FormDiffers : Form
+    public partial class FormDiffersProgramaciones : Form
     {
         private ClassOperatingRoom operatingRooms = new ClassOperatingRoom();
         private Surgeries surgeries = new Surgeries();
-        int typeA, idSurgerie;
+        int typeA, idProgramaciones;
         
-        public FormDiffers(int idSurgeriee, string pacientName)
+        public FormDiffersProgramaciones(int ProgramacionesID, string pacientName)
         {
             InitializeComponent();
-            idSurgerie = idSurgeriee;
+            idProgramaciones = ProgramacionesID;
             textBoxName.Text = pacientName;
             textBoxName.ReadOnly = true;
         }
@@ -33,7 +33,7 @@ namespace UI
             }
             else
             {
-                    string resp = surgeries.diffSurgerie(idSurgerie, textBoxDetail.Text);
+                    string resp = surgeries.diffSurgerie(idProgramaciones, textBoxDetail.Text, "Pre-programacion");
                     MessageBox.Show(resp);
                     this.Close();
                 

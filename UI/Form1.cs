@@ -97,6 +97,10 @@ namespace UI
             {
                 btn.IconChar = FontAwesome.Sharp.IconChar.UserMd;
             }
+            else if (text == "Diferidos")
+            {
+                btn.IconChar = FontAwesome.Sharp.IconChar.Moon;
+            }
             btn.IconSize = 38;
             btn.IconColor = Color.White;
             btn.Font = new Font("Arial", 12f);
@@ -205,6 +209,11 @@ namespace UI
             if (btn.Name == "iconButtonEspecialidades de doctores")
             {
                 openChildForm(new FormSpecialtiesDoctors());
+            }
+            if (btn.Name == "iconButtonDiferidos")
+            {
+                //openChildForm(new assignSurgery(userId));
+                openChildForm(new Diferidos(userId));
             }
         }
         public Form1(string userLog, int role, int serviceId, int idUser)

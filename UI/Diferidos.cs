@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using BLL;
 namespace UI
 {
-    public partial class assignSurgery : Form
+    public partial class Diferidos : Form
     {
         private ClassRequestSurgery surgeries = new ClassRequestSurgery();
         private ClassOperatingRoom operatingRooms = new ClassOperatingRoom();
@@ -21,12 +21,19 @@ namespace UI
         private ClassDoctor doctorss = new ClassDoctor();
        
         int userId;
-        public assignSurgery(int idUser)
+        string today;
+        string dateSelected;
+        public Diferidos(int idUser)
         {
             InitializeComponent();
             userId = idUser;
             listasOpciones();
+            
+            DateTimePicker myPicker = new DateTimePicker();
+            myPicker.Value = DateTime.Now;
+            dateTimePicker2.Text = myPicker.Value.ToString("yyyy/MM/dd");
         }
+
 
         void listasOpciones()
         {
@@ -39,17 +46,20 @@ namespace UI
             comboBoxRelevance.Items.Insert(0, "No aplica");
             comboBoxRelevance.SelectedIndex = 0;
         }
-        void ListRequestedSugreries()
+        void ListRequestedSugreries(String Date)
         {
-            DataTable surgeriesInfo = surgeries.getRequestedSurgeries();
+            DataTable surgeriesInfo = surgeries.getDeferedSurgeries(Date);
          
             if (surgeriesInfo.Rows.Count<1)
             {
-               
+                dataGridView1.Visible = false;
+                labelNoSurgery.Visible = true;
             }
             else
             {
-                dataGridView1.DataSource = surgeries.getRequestedSurgeries();
+                labelNoSurgery.Visible = false;
+                dataGridView1.Visible = true;
+                dataGridView1.DataSource = surgeriesInfo;
                 dataGridView1.Columns[0].Visible = false;
                 dataGridView1.Columns[1].Visible = false;
                 dataGridView1.Columns[9].Visible = false;
@@ -80,16 +90,12 @@ namespace UI
         private void assignSurgery_Load(object sender, EventArgs e)
         {
             dateTimeSurgeryDate.Value = DateTime.Now.Date;
-            ListRequestedSugreries();
+            ListRequestedSugreries(dateTimeSurgeryDate.Value.ToString("yyyy/MM/dd"));
             listAnesthesiaTypes();
             DataTable infoOperatingRooms = operatingRooms.listoperatingRooms();
             comboBoxOperatingRooms.ValueMember = "idquirofano";
             comboBoxOperatingRooms.DisplayMember = "no_quirofano";
             comboBoxOperatingRooms.DataSource = infoOperatingRooms;
-
-
-            
-
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)
@@ -97,16 +103,10 @@ namespace UI
 
         }
         int programationId;
-        private int surgerieId;
-        private string pacientName;
-
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                surgerieId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
-                pacientName = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
-
                 labelID.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
                 programationId= Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
                 textBoxHistory.Text= dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
@@ -349,7 +349,7 @@ namespace UI
 
                                         this.Close();
                                     }
-                                    
+                                   
                                 }
                             }
                             else
@@ -431,10 +431,6 @@ namespace UI
             }
         }
 
-        private void iconButton1_Click(object sender, EventArgs e)
-        {
-        }
-
         private void iconButton1_Click_1(object sender, EventArgs e)
         {
 
@@ -486,10 +482,12 @@ namespace UI
         private void iconButtonDiffer_Click(object sender, EventArgs e)
         {
 
-            FormDiffersProgramaciones fDiffers = new FormDiffersProgramaciones(programationId, pacientName);
-            fDiffers.ShowDialog();
-            ListRequestedSugreries();
-            this.Close();
+        }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            dateSelected = dateTimePicker2.Value.ToString("yyyy/MM/dd");
+            ListRequestedSugreries(dateSelected);  
         }
     }
 }

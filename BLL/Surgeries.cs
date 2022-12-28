@@ -115,12 +115,24 @@ namespace BLL
             }
         }
 
-        public string diffSurgerie(int idSurgerie, string reason)
+        public string diffSurgerie(int idSurgerie, string reason, String lugar="programacion")
         {
 
             try
             {
-                surgeries.diffSurgerie(idSurgerie, reason);
+                if (lugar == "programacion")
+                
+                    {
+                        surgeries.diffSurgerie(idSurgerie, reason);
+                    }
+                else
+                    {
+                    //Se recibe id programacion
+                    
+                    surgeries.diferirProgramacion(idSurgerie, reason);
+                }
+                
+                
                 return "Cirugia diferida con exito";
             }
             catch (Exception error)

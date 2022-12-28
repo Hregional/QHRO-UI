@@ -1,7 +1,7 @@
 ﻿
 namespace UI
 {
-    partial class assignSurgery
+    partial class Diferidos
     {
         /// <summary>
         /// Required designer variable.
@@ -34,6 +34,7 @@ namespace UI
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBoxpatientData = new System.Windows.Forms.GroupBox();
+            this.labelID = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
@@ -61,7 +62,6 @@ namespace UI
             this.comboBoxRelevance = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.labelID = new System.Windows.Forms.Label();
             this.labelsecondName = new System.Windows.Forms.Label();
             this.listViewAssistants = new System.Windows.Forms.ListView();
             this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -79,7 +79,6 @@ namespace UI
             this.listBoxDocId = new System.Windows.Forms.ListBox();
             this.iconButtonDeleteAll = new FontAwesome.Sharp.IconButton();
             this.iconButtonAddAssistant = new FontAwesome.Sharp.IconButton();
-            this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.iconButtonDiffer = new FontAwesome.Sharp.IconButton();
@@ -101,6 +100,11 @@ namespace UI
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.labelAnesthesiaTypesAsigned = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.labelNoSurgery = new System.Windows.Forms.Label();
             this.groupBoxpatientData.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -121,14 +125,15 @@ namespace UI
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBoxDocsData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxpatientData
             // 
             this.groupBoxpatientData.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxpatientData.Controls.Add(this.tableLayoutPanel6);
             this.groupBoxpatientData.Controls.Add(this.labelID);
+            this.groupBoxpatientData.Controls.Add(this.tableLayoutPanel6);
             this.groupBoxpatientData.Enabled = false;
             this.groupBoxpatientData.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxpatientData.Location = new System.Drawing.Point(13, 335);
@@ -140,6 +145,17 @@ namespace UI
             this.groupBoxpatientData.TabStop = false;
             this.groupBoxpatientData.Text = "Datos del paciente";
             this.groupBoxpatientData.Enter += new System.EventHandler(this.groupBoxpatientData_Enter);
+            // 
+            // labelID
+            // 
+            this.labelID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelID.AutoSize = true;
+            this.labelID.Location = new System.Drawing.Point(797, 10);
+            this.labelID.Name = "labelID";
+            this.labelID.Size = new System.Drawing.Size(63, 24);
+            this.labelID.TabIndex = 18;
+            this.labelID.Text = "label10";
+            this.labelID.Visible = false;
             // 
             // tableLayoutPanel6
             // 
@@ -244,7 +260,7 @@ namespace UI
             this.comboBoxTime.Items.AddRange(new object[] {
             "A.M",
             "P.M"});
-            this.comboBoxTime.Location = new System.Drawing.Point(322, 11);
+            this.comboBoxTime.Location = new System.Drawing.Point(322, 7);
             this.comboBoxTime.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxTime.Name = "comboBoxTime";
             this.comboBoxTime.Size = new System.Drawing.Size(152, 32);
@@ -316,7 +332,7 @@ namespace UI
             "57",
             "58",
             "59"});
-            this.comboBoxMin.Location = new System.Drawing.Point(171, 11);
+            this.comboBoxMin.Location = new System.Drawing.Point(171, 7);
             this.comboBoxMin.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxMin.Name = "comboBoxMin";
             this.comboBoxMin.Size = new System.Drawing.Size(143, 32);
@@ -353,7 +369,7 @@ namespace UI
             "10",
             "11",
             "12"});
-            this.comboBoxHour.Location = new System.Drawing.Point(4, 11);
+            this.comboBoxHour.Location = new System.Drawing.Point(4, 7);
             this.comboBoxHour.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxHour.Name = "comboBoxHour";
             this.comboBoxHour.Size = new System.Drawing.Size(114, 32);
@@ -496,7 +512,7 @@ namespace UI
             this.comboBoxSurgeryType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSurgeryType.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.comboBoxSurgeryType.FormattingEnabled = true;
-            this.comboBoxSurgeryType.Location = new System.Drawing.Point(614, 124);
+            this.comboBoxSurgeryType.Location = new System.Drawing.Point(614, 120);
             this.comboBoxSurgeryType.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxSurgeryType.Name = "comboBoxSurgeryType";
             this.comboBoxSurgeryType.Size = new System.Drawing.Size(478, 32);
@@ -543,7 +559,7 @@ namespace UI
             this.comboBoxRelevance.Items.AddRange(new object[] {
             "Mayor",
             "Menor"});
-            this.comboBoxRelevance.Location = new System.Drawing.Point(134, 119);
+            this.comboBoxRelevance.Location = new System.Drawing.Point(134, 115);
             this.comboBoxRelevance.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxRelevance.Name = "comboBoxRelevance";
             this.comboBoxRelevance.Size = new System.Drawing.Size(420, 32);
@@ -570,17 +586,6 @@ namespace UI
             this.label9.Size = new System.Drawing.Size(108, 25);
             this.label9.TabIndex = 36;
             this.label9.Text = "Relevancia";
-            // 
-            // labelID
-            // 
-            this.labelID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelID.AutoSize = true;
-            this.labelID.Location = new System.Drawing.Point(812, 16);
-            this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(63, 24);
-            this.labelID.TabIndex = 18;
-            this.labelID.Text = "label10";
-            this.labelID.Visible = false;
             // 
             // labelsecondName
             // 
@@ -719,7 +724,7 @@ namespace UI
             this.comboBoxOperatingRooms.Items.AddRange(new object[] {
             "General",
             "Epidural"});
-            this.comboBoxOperatingRooms.Location = new System.Drawing.Point(270, 16);
+            this.comboBoxOperatingRooms.Location = new System.Drawing.Point(270, 12);
             this.comboBoxOperatingRooms.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxOperatingRooms.Name = "comboBoxOperatingRooms";
             this.comboBoxOperatingRooms.Size = new System.Drawing.Size(259, 32);
@@ -815,18 +820,6 @@ namespace UI
             this.iconButtonAddAssistant.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.iconButtonAddAssistant.UseVisualStyleBackColor = false;
             this.iconButtonAddAssistant.Click += new System.EventHandler(this.iconButtonAddAssistant_Click);
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(692, 25);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(300, 40);
-            this.label7.TabIndex = 35;
-            this.label7.Text = "Pacientes en cola";
             // 
             // tableLayoutPanel2
             // 
@@ -1200,7 +1193,7 @@ namespace UI
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.GridColor = System.Drawing.Color.White;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 66);
+            this.dataGridView1.Location = new System.Drawing.Point(18, 126);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
@@ -1221,7 +1214,7 @@ namespace UI
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1685, 263);
+            this.dataGridView1.Size = new System.Drawing.Size(1685, 205);
             this.dataGridView1.TabIndex = 25;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -1247,21 +1240,82 @@ namespace UI
             this.listBox1.TabIndex = 40;
             this.listBox1.Visible = false;
             // 
-            // assignSurgery
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.label7);
+            this.panel4.Controls.Add(this.iconButton2);
+            this.panel4.Controls.Add(this.dateTimePicker2);
+            this.panel4.Location = new System.Drawing.Point(214, 22);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1229, 78);
+            this.panel4.TabIndex = 43;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(99, 25);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(304, 40);
+            this.label7.TabIndex = 43;
+            this.label7.Text = "Cirugias diferidas";
+            // 
+            // iconButton2
+            // 
+            this.iconButton2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton2.IconColor = System.Drawing.Color.Black;
+            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton2.Location = new System.Drawing.Point(979, 21);
+            this.iconButton2.Margin = new System.Windows.Forms.Padding(4);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.Size = new System.Drawing.Size(115, 32);
+            this.iconButton2.TabIndex = 42;
+            this.iconButton2.Text = "Ver";
+            this.iconButton2.UseVisualStyleBackColor = true;
+            this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.dateTimePicker2.CustomFormat = "";
+            this.dateTimePicker2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker2.Location = new System.Drawing.Point(558, 23);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dateTimePicker2.Size = new System.Drawing.Size(380, 30);
+            this.dateTimePicker2.TabIndex = 41;
+            this.dateTimePicker2.Value = new System.DateTime(2021, 11, 18, 0, 0, 0, 0);
+            // 
+            // labelNoSurgery
+            // 
+            this.labelNoSurgery.AutoSize = true;
+            this.labelNoSurgery.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNoSurgery.Location = new System.Drawing.Point(537, 164);
+            this.labelNoSurgery.Name = "labelNoSurgery";
+            this.labelNoSurgery.Size = new System.Drawing.Size(771, 32);
+            this.labelNoSurgery.TabIndex = 44;
+            this.labelNoSurgery.Text = "No se han encontrado cirugías diferidas para esta fecha";
+            // 
+            // Diferidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1715, 1102);
+            this.Controls.Add(this.labelNoSurgery);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.labelAnesthesiaTypesAsigned);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBoxpatientData);
             this.Controls.Add(this.dataGridView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "assignSurgery";
+            this.Name = "Diferidos";
             this.Text = "assignSurgery";
             this.Load += new System.EventHandler(this.assignSurgery_Load);
             this.groupBoxpatientData.ResumeLayout(false);
@@ -1292,6 +1346,8 @@ namespace UI
             this.tableLayoutPanel1.ResumeLayout(false);
             this.groupBoxDocsData.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1328,7 +1384,6 @@ namespace UI
         private System.Windows.Forms.TextBox textBoxHistory;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.TextBox textBoxLastName;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxDiagnosis;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -1366,5 +1421,10 @@ namespace UI
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox listBox1;
         private FontAwesome.Sharp.IconButton iconButtonDiffer;
+        private System.Windows.Forms.Panel panel4;
+        private FontAwesome.Sharp.IconButton iconButton2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelNoSurgery;
     }
 }

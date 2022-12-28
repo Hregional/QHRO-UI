@@ -20,6 +20,11 @@ namespace BLL
             return surgeries.GetUnfinishedSurgeries();
         }
 
+        public DataTable getDeferedSurgeries(String Date)
+        {
+            return surgeries.ObtenerCirugiasDiferidas(Date);
+        }
+
         public DataTable getRequestedSurgeries()
         {
             return surgeries.ObtenerCirugiasSinLlenar();
