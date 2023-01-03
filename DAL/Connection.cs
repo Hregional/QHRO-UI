@@ -18,6 +18,7 @@ namespace DAL
         private SqlConnection connection = new SqlConnection("Server=192.168.1.10; Database=HROBD; User Id=sa; Password=Hospital0;");
         private SqlConnection connection2 = new SqlConnection("Server=192.168.1.64; Database=RecepcionV2; User Id=sa; Password=Hospital0;");
         //Cadenas del hospital
+        //private SqlConnection connection = new SqlConnection("Server=(localdb)\\mssqllocaldb; Database=HROBD;Trusted_Connection=True;");
         //private SqlConnection connection = new SqlConnection("Server=LAPTOP-I3GV05RI\\SQL2019; Database=HROBD; Trusted_Connection=True;");
         //private SqlConnection connection2 = new SqlConnection("Server=LAPTOP-I3GV05RI\\SQL2019; Database=hroTest; Trusted_Connection=True;");
 
