@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
@@ -66,10 +67,17 @@ namespace UI
                     idSurgery = Convert.ToInt32(item.Field<int>(0));
                     surgerie.No_Historia = item.Field<string>(1).ToString();
                     surgerie.Nombre = item.Field<string>(2).ToString();
-                    surgerie.Sexo = item.Field<string>(3).ToString();
+                    if (item.Field<string>(3).ToString() == "M" || item.Field<string>(3).ToString() == "Masculino")
+                    {
+                        surgerie.Sexo = "Masculino";
+                    }
+                    else
+                    {
+                        surgerie.Sexo = "Femenino";
+                    }
                     surgerie.Edad = Convert.ToInt16(item.Field<short>(4));
                     surgerie.Servicio = item.Field<string>(5).ToString();
-                    surgerie.Operacion_Realizada = item.Field<string>(6).ToString();
+                    surgerie.Operacion_Realizada = normalizarCadena(item.Field<string>(6).ToString());
                     surgerie.Quirofano = item.Field<string>(7).ToString();
                     surgerie.Tipo_Anestesia = item.Field<string>(8).ToString();
                     DataTable getSurgeries = surgeries.getDoctorsByIdSurgerie(idSurgery);
@@ -79,19 +87,19 @@ namespace UI
                         foreach (DataRow itemDoc in getSurgeries.Rows)
                         {
                             surgerie.Cirujano = itemDoc.Field<string>(1).ToString();
-                            surgerie.Especialidad = itemDoc.Field<string>(2).ToString();
+                            surgerie.Especialidad = normalizarCadena(itemDoc.Field<string>(2).ToString());
                         }
                     }
                     else
                     {
                         foreach (DataRow itemDoc in getSurgeries.Rows)
                         {
-                            docName = ' ' + docName + itemDoc.Field<string>(1).ToString() + " / ";
-                            specialties = ' ' + specialties + itemDoc.Field<string>(2).ToString() + " / ";
+                            docName =  docName + itemDoc.Field<string>(1).ToString() + " / ";
+                            specialties = specialties + normalizarCadena(itemDoc.Field<string>(2).ToString()) + " / ";
                         }
                         surgerie.Cirujano = docName.TrimEnd(' ');
                         surgerie.Cirujano = surgerie.Cirujano.TrimEnd('/');
-                        surgerie.Especialidad = specialties.TrimEnd(' ');
+                        surgerie.Especialidad = (specialties.TrimEnd(' '));
                         surgerie.Especialidad = surgerie.Especialidad.TrimEnd('/');
                     }
                     DataTable infoAnestesistas = surgeries.getAnesthetistBySurgerie(idSurgery);
@@ -563,5 +571,17 @@ namespace UI
         {
 
         }
+
+        /// <summary>
+        /// Permite normalizar una cadena de texto, eliminando los caracteres especiales, espacios en blanco y convirtiendo todo a mayúsculas.
+        /// </summary>
+        /// <param name="texto"></param>
+        /// <returns> texto normalizado </returns>
+        private string normalizarCadena(string texto) {
+
+           return Regex.Replace(texto.ToUpperInvariant(), @"[^a-zA-z0-9 ]+", "").Trim();
+            
+        }
     }
+    
 }
