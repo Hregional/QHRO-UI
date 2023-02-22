@@ -491,5 +491,17 @@ namespace UI
             ListRequestedSugreries();
             this.Close();
         }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            dt = (DataTable)dataGridView1.DataSource;
+            dt.DefaultView.RowFilter = string.Format("[Primer Nombre] LIKE '%{0}%' or [Primer Apellido] LIKE '%{0}%'", textBox1.Text);
+        }
     }
 }
